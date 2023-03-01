@@ -90,6 +90,7 @@ const usuariosDelete = async(req, res) => {
     
     //manteniendo integridad referencial
     const usuario = await Usuario.findByIdAndUpdate(id, {estado: false});
+    //const usuarioAutenticado = req.usuario;
     res.json({
         usuario
     });

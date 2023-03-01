@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import {router} from '../routes/usuarios.js';
+import {router as routerAuth} from '../routes/auth.js';
 import { dbConnection } from '../database/config.js';
 
 
@@ -8,7 +9,9 @@ class Server{
     constructor(){
         this.app  = express();
         this.port = process.env.PORT;
+
         this.usuariosPath = '/api/usuarios';
+        this.authPath = '/api/auth';
 
         //Middlewares(intercambio de información entre aplicaciones)
         this.middlewares();
@@ -36,6 +39,7 @@ class Server{
     }
 
     routes(){
+        this.app.use(this.authPath,routerAuth);
         this.app.use(this.usuariosPath,router);
     }
 
