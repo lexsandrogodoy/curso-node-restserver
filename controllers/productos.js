@@ -70,7 +70,7 @@ const productoDelete = async(req, res = response) => {
 
 //actualizar producto
 const productoPut = async(req, res = response) => {
-    const nombre = req.body.nombre.toUpperCase();
+    /*const nombre = req.body.nombre.toUpperCase();
     const {id} = req.params;
 
     const {
@@ -95,17 +95,17 @@ const productoPut = async(req, res = response) => {
     });
     res.json(
         producto
-    )
+    )*/
 
     //forma 2 profesor
-    //const {id} = req.params;
-    //const {estado, usuario, ...data} = req.body;
-    //if(data.nombre){
-    //      data.nombre= data.nombre.toUpperCase(); 
-    //}
-    //data.usuario = req.usuario._id;
-    //const producto = await Producto.findByIdAndUpdate(id, data, { new: true });
-    //res.json(categoria);
+    const {id} = req.params;
+    const {estado, usuario, ...data} = req.body;
+    if(data.nombre){
+          data.nombre= data.nombre.toUpperCase(); 
+    }
+    data.usuario = req.usuario._id;
+    const producto = await Producto.findByIdAndUpdate(id, data, { new: true });
+    res.json(producto);
 
 }
 

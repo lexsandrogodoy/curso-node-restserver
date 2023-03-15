@@ -55,14 +55,14 @@ router.get('/:id',
 //podría eliminas las validaciones de los elementos que podrían no venir
 router.put('/:id',
     [
-        validarJWT,
-        esAdminRole,
+        //validarJWT,
+        //esAdminRole,
         check('id','No es un id de mongo').isMongoId(),
         check('id','No existe el producto').custom(existeProducto),
-        check('nombre','El nombre es obligatorio').notEmpty(),
+        //check('nombre','El nombre es obligatorio').notEmpty(),
         check('precio','Debe ser un número').isNumeric(),
         check('categoria','No es un id de Mongo').custom(existeCategoria),
-        check('descripcion','La descripcion es obligatoria').notEmpty(),
+        //check('descripcion','La descripcion es obligatoria').notEmpty(),
         validarCampos
     ],
     productoPut
